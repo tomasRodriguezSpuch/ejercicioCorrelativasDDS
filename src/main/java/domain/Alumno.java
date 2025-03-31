@@ -1,21 +1,20 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Alumno{
     private String nombre;
     private List<Materia> aprobadas;
-    private List<Materia> materiasAIncribirse;
 
-    public Alumno(String nombre, List<Materia> aprobadas) {
+    public Alumno(String nombre) {
         this.nombre = nombre;
-        this.aprobadas = aprobadas;
+        this.aprobadas = new ArrayList<>();
     }
 
-    public void agregarMateriaAInscripcion(Materia materia){this.materiasAIncribirse.add(materia);}
+    public void agregarMateriaAAprobadas(Materia ... materias){Collections.addAll(this.aprobadas, materias);}
 
-    public void hacerInscripcion(Materia ... materias){Inscripcion inscripcion = new Inscripcion(this, this.materiasAIncribirse);}
-
-    public boolean aprobada(String materia) {return this.aprobadas.contains(materia);}
+    public boolean aprobada(Materia materia) {return this.aprobadas.contains(materia);}
 }
 
